@@ -1,0 +1,8 @@
+artifacts_root: artifacts
+
+
+data_ingestion:
+  root_dir: artifacts/data_ingestion
+  source_URL: https://docs.google.com/spreadsheets/d/1mW6Agx4ueXhuM6D9yrUlt2uc_C1nHN5o/edit?usp=sharing
+  local_data_file: artifacts/data_ingestion/lapse-rate.xlsx
+  unzip_dir: artifacts/data_ingestion
