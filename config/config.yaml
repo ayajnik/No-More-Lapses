@@ -13,7 +13,10 @@ data_validation:
   ALL_REQUIRED_FILES: ["lapse-rate.xlsx"]
 
 data_transformation:
+  original_data: artifacts/data_ingestion/lapse-rate.xlsx
   root_dir: artifacts/transformed_data
   transformed_data_path: artifacts/transformed_data/lapsed_data_encoded.csv
-  training_data: artifacts/transformed_data/train.csv
-  testing_data: artifacts/transformed_data/test.csv
+  training_independent_data: artifacts/transformed_data/trainining_data/X_train.csv
+  training_dependent_data: artifacts/transformed_data/trainining_data/y_train.csv
+  testing_independent_data: artifacts/transformed_data/testing_data/X_test.csv
+  testing_dependent_data: artifacts/transformed_data/testing_data/y_test.csv
