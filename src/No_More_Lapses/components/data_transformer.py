@@ -5,6 +5,9 @@ from sklearn.feature_selection import SelectKBest, chi2
 from sklearn.impute import SimpleImputer
 from src.No_More_Lapses import logger
 from src.No_More_Lapses.entity.config_entity import DataTransformationConfig
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
 
 
 
@@ -19,7 +22,7 @@ class DataTransformer:
         
         # 1. Select columns with object dtype
         logger.info("Reading the original dataset for extracting object data type")
-        dataframe = pd.read_csv(self.config.data)
+        dataframe = pd.read_csv(self.config.data, on_bad_lines='skip')
         logger.info("Extracting columns with object data type")
         object_columns = dataframe.select_dtypes(include=['object']).columns
         logger.info("creating a dataframe with columns with no object data type columns")
