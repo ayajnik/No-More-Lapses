@@ -1,7 +1,8 @@
 from src.No_More_Lapses.constants import *
 from src.No_More_Lapses.utils.common import read_yaml, create_directories
 from src.No_More_Lapses.entity.config_entity import (DataIngestionConfig,
-                                                    DataValidationConfig)
+                                                    DataValidationConfig,
+                                                    DataTransformationConfig)
 
 class ConfigurationManager:
     def __init__(
@@ -42,3 +43,24 @@ class ConfigurationManager:
         )
 
         return data_validation_config
+    
+    def get_data_transformation_config(self) -> DataTransformationConfig:
+        config = self.config.data_transformation
+
+        create_directories([config.root_dir])
+        create_directories([config.trainData])
+        create_directories([config.testData])
+
+        data_transformation_config = DataTransformationConfig(
+            data = config.original_data,
+            root_dir=config.root_dir,
+            transformed_data_path = config.transformed_data_path,
+            trainData = config.trainData,
+            testData = config.testData,
+            training_independent_data=config.training_independent_data,
+            training_dependent_data=config.training_dependent_data,
+            testing_independent_data= config.testing_independent_data,
+            testing_dependent_data= config.testing_dependent_data
+        )
+
+        return data_transformation_config
