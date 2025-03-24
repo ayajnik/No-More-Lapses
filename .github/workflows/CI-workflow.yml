@@ -41,14 +41,20 @@ jobs:
       run: |
         python main.py
 
-    - name: Upload MLflow Artifacts
-      uses: actions/upload-artifact@v4
+  Upload-MLflow-Logs:
+    runs-on: ubuntu-latest  # Define the runner for this job
+    steps:
+    - name: Upload MLFlow logs
+      uses: actions/upload-artifact@v3  # Ensure artifact version is correct
       with:
         name: mlflow-logs
         path: mlruns/
 
-    - name: Upload Log Files
-      uses: actions/upload-artifact@v4
+  Upload-Project-Logs:
+    runs-on: ubuntu-latest  # Define the runner for this job
+    steps:
+    - name: Upload DL workflow logs
+      uses: actions/upload-artifact@v3  # Ensure artifact version is correct
       with:
         name: logs
         path: logs/
