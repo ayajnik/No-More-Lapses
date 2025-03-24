@@ -13,7 +13,7 @@ permissions:
   contents: read
 
 jobs:
-  Python DL workflow:
+  Python-DL-workflow:
 
     runs-on: ubuntu-latest
 
