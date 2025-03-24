@@ -4,7 +4,7 @@ on:
     workflow_dispatch:
 
 jobs:
-  build:
+  Publish-No-More-Lapses:
     runs-on: ubuntu-latest  # Runs on the latest Ubuntu runner
 
     steps:
@@ -16,7 +16,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.x'  # Specify the Python version you want to use
+          python-version: '3.8.18'  # Specify the Python version you want to use
 
       # Install dependencies
       - name: Install dependencies
