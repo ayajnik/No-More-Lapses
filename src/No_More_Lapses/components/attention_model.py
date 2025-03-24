@@ -3,6 +3,7 @@ from tensorflow.keras import layers, models
 import pandas as pd
 import numpy as np
 import tensorflow as tf
+from tensorflow.keras.callbacks import EarlyStopping
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from src.No_More_Lapses import logger
@@ -34,7 +35,10 @@ def build_attention_model(input_dim, num_classes, return_attention=False):
     attention_layer = AttentionLayer()
     attention_output, attention_weights = attention_layer(x)
 
-    x = tf.keras.layers.Dense(64, activation='relu')(attention_output)
+    x = tf.keras.layers.Dense(128, activation='relu')(attention_output)
+    x = tf.keras.layers.Dropout(0.3)(x)
+    x = tf.keras.layers.Dense(64, activation='relu')(x)
+    x = tf.keras.layers.Dropout(0.2)(x)
     x = tf.keras.layers.Dense(32, activation='relu')(x)
     output = tf.keras.layers.Dense(num_classes, activation='softmax')(x)
 
@@ -44,6 +48,7 @@ def build_attention_model(input_dim, num_classes, return_attention=False):
         model = tf.keras.Model(inputs=inputs, outputs=output)
 
     return model
+
 
 class ModelPreparation:
     
@@ -77,8 +82,9 @@ class ModelPreparation:
         loss='categorical_crossentropy',
         metrics=['accuracy']
             )
-        
-        model.fit(X_scaled, y_encoded, epochs=self.config.epochs, batch_size=self.config.batch_size)
+        early_stop = EarlyStopping(monitor="val_loss", patience=5, restore_best_weights=True)
+
+        model.fit(X_scaled, y_encoded, epochs=self.config.epochs, batch_size=self.config.batch_size,callbacks=[early_stop])
         attention_model = build_attention_model(input_dim=X_scaled.shape[1], num_classes=num_classes, return_attention=True)
         attention_model.set_weights(model.get_weights())
         loss, acc = model.evaluate(X_scaled, y_encoded)
