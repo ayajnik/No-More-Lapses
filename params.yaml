@@ -1,1 +1,6 @@
-EPOCHS: 1
+training_hyperparameters:
+  EPOCHS: 20
+  BATCH_SIZE: 32
+  OPTIMIZER: 'adam'
+  LOSS: 'categorical_crossentropy'
+  METRICS: 'accuracy'
