@@ -3,7 +3,7 @@ artifacts_root: artifacts
 
 data_ingestion:
   root_dir: artifacts/data_ingestion
-  source_URL: https://drive.google.com/file/d/11LLcJ7ZPn_kRdQ2amBlzBLznV0EdtOfq/view?usp=sharing
+  source_URL: https://drive.google.com/file/d/<file id>/view?usp=sharing
   local_data_file: artifacts/data_ingestion/Kaggle (1).csv
   unzip_dir: artifacts/data_ingestion
 
