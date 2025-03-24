@@ -4,6 +4,7 @@ from src.No_More_Lapses.pipeline.stage_02_data_validation import DataValidationT
 from src.No_More_Lapses.pipeline.stage_03_data_transformer import DataTransformerTrainingPipeline
 from src.No_More_Lapses.pipeline.stage_04_base_model import BaselineModelTrainingPipeline
 from src.No_More_Lapses.pipeline.stage_05_attention_model import AttentionModelTrainingPipeline
+from src.No_More_Lapses.pipeline.stage_06_prediction import PredictionPipelineStage
 
 
 STAGE_NAME = "Data Ingestion stage"
@@ -55,6 +56,17 @@ STAGE_NAME = "Attention Model stage"
 try:
    logger.info(f">>>>>> stage {STAGE_NAME} started <<<<<<") 
    baselining = AttentionModelTrainingPipeline()
+   baselining.main()
+   logger.info(f">>>>>> stage {STAGE_NAME} completed <<<<<<\n\nx==========x")
+except Exception as e:
+        logger.exception(e)
+        raise e
+
+STAGE_NAME = "Prediction stage"
+
+try:
+   logger.info(f">>>>>> stage {STAGE_NAME} started <<<<<<") 
+   baselining = PredictionPipelineStage()
    baselining.main()
    logger.info(f">>>>>> stage {STAGE_NAME} completed <<<<<<\n\nx==========x")
 except Exception as e:

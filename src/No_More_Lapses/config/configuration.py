@@ -3,7 +3,8 @@ from src.No_More_Lapses.utils.common import read_yaml, create_directories
 from src.No_More_Lapses.entity.config_entity import (DataIngestionConfig,
                                                     DataValidationConfig,
                                                     DataTransformationConfig,
-                                                    ModelPreparationConfig)
+                                                    ModelPreparationConfig,
+                                                    PredictionPipelineConfig)
 
 class ConfigurationManager:
     def __init__(
@@ -82,6 +83,19 @@ class ConfigurationManager:
             optimizer=params.OPTIMIZER,
             loss=params.LOSS,
             metrics=params.METRICS
+        )
+
+        return data_transformation_config
+    
+    def get_prediction_pipeline_config(self) -> PredictionPipelineConfig:
+        config = self.config.prediction_pipeline
+
+        
+        data_transformation_config = PredictionPipelineConfig(
+            test_independent_data_path = config.test_independent_data_path,
+            test_dependent_data_path = config.test_dependent_data_path,
+            trained_model_path = config.trained_model_path,
+            predictions_output_path=config.predictions_output_path
         )
 
         return data_transformation_config
