@@ -37,7 +37,8 @@ class DataIngestion:
                 logger.info(f"Extracted file_id: {file_id}")
                 
                 # Use gdown's direct ID download method
-                gdown.download(id=file_id, output=str(zip_download_dir), quiet=False)
+                url = f"https://drive.google.com/uc?id={file_id}"
+                #gdown.download(id=url, output=str(zip_download_dir), quiet=False)
             else:
                 # For non-Google Drive URLs, you might want to use a different method
                 import requests
