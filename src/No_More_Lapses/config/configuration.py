@@ -2,7 +2,8 @@ from src.No_More_Lapses.constants import *
 from src.No_More_Lapses.utils.common import read_yaml, create_directories
 from src.No_More_Lapses.entity.config_entity import (DataIngestionConfig,
                                                     DataValidationConfig,
-                                                    DataTransformationConfig)
+                                                    DataTransformationConfig,
+                                                    ModelPreparationConfig)
 
 class ConfigurationManager:
     def __init__(
@@ -61,6 +62,26 @@ class ConfigurationManager:
             training_dependent_data=config.training_dependent_data,
             testing_independent_data= config.testing_independent_data,
             testing_dependent_data= config.testing_dependent_data
+        )
+
+        return data_transformation_config
+    
+    def get_model_preparation_config(self) -> ModelPreparationConfig:
+        config = self.config.model_trainer
+        params = self.params.training_hyperparameters
+
+        create_directories([config.root_dir])
+        
+        data_transformation_config = ModelPreparationConfig(
+            root_dir=config.root_dir,
+            training_independent_data_path = config.training_independent_data_path,
+            training_dependent_data_path = config.training_dependent_data_path,
+            model_saved_path = config.model_saved_path,
+            epochs=params.EPOCHS,
+            batch_size=params.BATCH_SIZE,
+            optimizer=params.OPTIMIZER,
+            loss=params.LOSS,
+            metrics=params.METRICS
         )
 
         return data_transformation_config

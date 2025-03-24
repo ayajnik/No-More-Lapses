@@ -16,6 +16,8 @@ jobs:
   Python-DL-workflow:
 
     runs-on: ubuntu-latest
+    env:
+      MLFLOW_TRACKING_URI: file:mlruns
 
     steps:
     - uses: actions/checkout@v4
@@ -37,3 +39,13 @@ jobs:
     - name: Running the DL worflow
       run: |
         python main.py
+    - name: Upload MLflow Artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: mlruns
+        path: mlruns/
+    - name: Upload Log Files
+      uses: actions/upload-artifact@v3
+      with:
+        name: logs
+        path: logs/

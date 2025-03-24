@@ -26,3 +26,19 @@ class DataTransformationConfig:
     training_dependent_data: Path
     testing_independent_data: Path
     testing_dependent_data: Path
+
+from dataclasses import dataclass
+from pathlib import Path
+
+
+@dataclass(frozen=True)
+class ModelPreparationConfig:
+    root_dir: Path
+    training_independent_data_path: Path
+    training_dependent_data_path: Path
+    model_saved_path: Path
+    epochs: int
+    batch_size: int
+    optimizer: str
+    loss: str
+    metrics: str
