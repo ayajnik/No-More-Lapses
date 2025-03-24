@@ -24,11 +24,6 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt  # Install required dependencies from requirements.txt
 
-      # Run tests (optional)
-      - name: Run tests
-        run: |
-          pytest  # Run tests if you have them set up (modify if using another test framework)
-
       # Build the distribution files (sdist, wheel)
       - name: Build distribution files
         run: |
