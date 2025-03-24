@@ -42,6 +42,8 @@ jobs:
         python main.py
 
   Upload-MLflow-Logs:
+    if: ${{ always() }}
+    needs: Python-DL-workflow
     runs-on: ubuntu-latest  # Define the runner for this job
     steps:
     - name: Upload MLFlow logs
@@ -51,6 +53,10 @@ jobs:
         path: mlruns/
 
   Upload-Project-Logs:
+    if: ${{ always() }}
+    needs: 
+      - Python-DL-workflow
+      - Upload-MLflow-Logs
     runs-on: ubuntu-latest  # Define the runner for this job
     steps:
     - name: Upload DL workflow logs
