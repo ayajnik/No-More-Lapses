@@ -40,13 +40,13 @@ jobs:
         python main.py
     
     - name: Upload MLflow Artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: mlflow-logs
         path: mlruns/
 
     - name: Upload Log Files
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: logs
         path: logs/

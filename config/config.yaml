@@ -28,3 +28,9 @@ model_trainer:
   training_independent_data_path: artifacts/transformed_data/trainining_data/X_train.csv
   training_dependent_data_path: artifacts/transformed_data/trainining_data/y_train.csv
   model_saved_path: artifacts/model_trainer/attention_model.h5
+
+prediction_pipeline:
+  test_independent_data_path: artifacts/transformed_data/testing_data/X_test.csv
+  test_dependent_data_path: artifacts/transformed_data/testing_data/y_test.csv
+  trained_model_path: artifacts/model_trainer/attention_model.h5
+  predictions_output_path: artifacts/predictions/lapse_predictions.csv

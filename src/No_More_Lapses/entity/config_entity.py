@@ -27,10 +27,6 @@ class DataTransformationConfig:
     testing_independent_data: Path
     testing_dependent_data: Path
 
-from dataclasses import dataclass
-from pathlib import Path
-
-
 @dataclass(frozen=True)
 class ModelPreparationConfig:
     root_dir: Path
@@ -42,3 +38,10 @@ class ModelPreparationConfig:
     optimizer: str
     loss: str
     metrics: str
+
+@dataclass(frozen=True)
+class PredictionPipelineConfig:
+    test_independent_data_path: Path
+    test_dependent_data_path: Path
+    trained_model_path: Path
+    predictions_output_path: Path
