@@ -1,8 +1,7 @@
 name: Build and Push Docker Image to GHCR
+permissions: write-all 
 
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 jobs:
@@ -25,7 +24,7 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{ secrets.SECRET_PAT }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Extract metadata (tags, labels)
         id: meta
