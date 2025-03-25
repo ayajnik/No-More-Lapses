@@ -1,0 +1,48 @@
+stages:
+  data_ingestion:
+    cmd: python src/No_More_Lapses/pipeline/stage_01_data_ingestion.py
+    deps:
+      - src/No_More_Lapses/pipeline/stage_01_data_ingestion.py
+    outs:
+      - artifacts/data_ingestion/Kaggle (1).csv
+
+  data_validation:
+    cmd: python src/No_More_Lapses/pipeline/stage_02_data_validation.py
+    deps:
+      - artifacts/data_ingestion/raw_data.csv
+      - src/No_More_Lapses/pipeline/stage_02_data_validation.py
+    outs:
+      - artifacts/data_validation/status.txt
+
+  data_transformation:
+    cmd: python src/No_More_Lapses/pipeline/stage_03_data_transformation.py
+    deps:
+      - artifacts/data_validation/validated_data.csv
+      - src/No_More_Lapses/pipeline/stage_03_data_transformation.py
+    outs:
+      - artifacts/transformed_data/trainining_data/X_train.csv
+      - artifacts/transformed_data/trainining_data/y_train.csv
+      - artifacts/transformed_data/testing_data/X_test.csv
+      - artifacts/transformed_data/testing_data/y_test.csv
+      - artifacts/transformed_data/lapsed_data_encoded.csv
+
+  model_training:
+    cmd: python src/No_More_Lapses/pipeline/stage_05_attention_model.py
+    deps:
+      - artifacts/transformed_data/trainining_data/X_train.csv
+      - artifacts/transformed_data/trainining_data/y_train.csv
+    outs:
+      - artifacts/model_trainer/attention_model.h5
+    params:
+      - model_training.epochs
+      - model_training.batch_size
+
+  model_prediction:
+    cmd: python src/No_More_Lapses/pipeline/stage_06_predict.py
+    deps:
+      - src/No_More_Lapses/pipeline/stage_06_predict.py
+      - artifacts/model_trainer/attention_model.h5
+      - artifacts/test_data/X_test.csv
+      - artifacts/test_data/y_test.csv
+    outs:
+      - artifacts/predictions/lapse_predictions.csv
