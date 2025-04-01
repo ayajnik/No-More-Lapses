@@ -1,4 +1,36 @@
-# No-More-Lapses
+# No More Lapses
+
+**No More Lapses** is an AI-driven application designed to predict and analyze policy lapse rates, providing valuable insights to insurance companies and policyholders. By leveraging advanced machine learning techniques, the application identifies high-risk policies and offers recommendations to mitigate potential lapses.
+
+## Table of Contents
+
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Project Structure](#project-structure)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Features
+
+- **Policy Lapse Prediction**: Utilizes machine learning models to predict the likelihood of policy lapses based on historical data.
+- **Data Analysis Tools**: Provides tools to read, process, and analyze CSV data related to policy predictions.
+- **Web Research Integration**: Incorporates web search capabilities to gather external information relevant to policy analysis.
+- **Codebase Analysis**: Includes utilities to inspect and list source code modules, aiding in better understanding and maintenance of the codebase.
+
+## Installation
+
+To set up the **No More Lapses** application, follow these steps:
+
+1. **Clone the Repository**:
+
+   ```bash
+   git clone https://github.com/yourusername/no-more-lapses.git
+   cd no-more-lapses
+
+2. Install dependencies
+
+  `pip install -r requirements.txt`
 
 # Project Workflow
 
