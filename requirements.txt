@@ -4,11 +4,11 @@ dvc
 mlflow==2.2.2
 notebook
 numpy
-imblearn
+imbalanced-learn
 matplotlib
 seaborn
 python-box==6.0.2
-pyYAML
+pyyaml
 tqdm
 ensure==1.0.2
 joblib
@@ -17,8 +17,7 @@ scipy
 Flask
 Flask-Cors
 gdown
-crewai
-'crewai[tools]'
+crewai[tools]
 langchain==0.1.14
 openai==1.23.2
 tavily-python==0.3.2
