@@ -1,5 +1,5 @@
 tensorflow==2.12.0
-pandas 
+pandas
 dvc
 mlflow==2.2.2
 notebook
@@ -17,4 +17,10 @@ scipy
 Flask
 Flask-Cors
 gdown
+crewai
+crewai-tools
+langchain==0.1.14
+openai==1.23.2
+tavily-python==0.3.2
+chromadb==0.4.24
 -e .
