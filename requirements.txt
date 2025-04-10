@@ -18,7 +18,7 @@ Flask
 Flask-Cors
 gdown
 crewai
-crewai-tools
+'crewai[tools]'
 langchain==0.1.14
 openai==1.23.2
 tavily-python==0.3.2
