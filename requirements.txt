@@ -17,9 +17,14 @@ scipy
 Flask
 Flask-Cors
 gdown
-crewai[tools]
-langchain
+
+# Specify a compatible version of crewai[tools] and langchain to resolve conflicts
+crewai[tools]==0.1.7
+langchain>=0.0.351,<0.0.352
+
 openai==1.23.2
 tavily-python==0.3.2
 chromadb==0.4.24
+
+# Local package installation (editable mode)
 -e .
